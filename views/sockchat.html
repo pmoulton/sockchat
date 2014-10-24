@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <title>SockChat</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="header">
+    <h1 style="color:white">SockChat - A new way to communicate</h1>
+    <p style="color:white">Chat and banter anonymously or with usernames.</p>
+    <p style="color:white">By <a style="color:white" href="http://paul-moulton.com/">Paul Moulton</a>.</p>
+    </div>
+  <div id="chat">
+    <ul id="messages"></ul>
+    <form action="">
+     	<input id="n" type="name" placeholder="Username" autocomplete="on"/>
+	<input id="m" type="sms" placeholder="Your message" autocomplete="off" />
+	<button class="pure-button pure-button-primary">Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io();
+      $('form').submit(function(){
+	if ($('#m').val() != '') {
+		socket.emit('chat message', $('#m').val(), $('#n').val()); 
+		$('#m').val('');
+		return false;
+	}
+	else {
+        	$('#messages').append($('<li>').text("You didn't send anything"));
+		return false;
+	}
+      });
+      socket.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+      });
+      socket.on('status message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+      });
+    </script>
+  </div>
+  </body>
+</html>

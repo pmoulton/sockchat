@@ -1,0 +1,9 @@
+{
+  "name": "SockChat",
+  "version": "0.0.1",
+  "description": "non-blocking socket-based chatroom",
+  "dependencies": {
+    "express": "^4.7.2",
+    "socket.io": "^1.0.6"
+  }
+}
