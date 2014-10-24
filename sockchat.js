@@ -1,3 +1,6 @@
+/**
+ * Created by Paul Moulton on 10/23/14.
+ */
 var express = require('express');
 var app = require('express')();
 var http = require('http').Server(app);
@@ -20,7 +23,12 @@ io.on('connection', function(socket){
     socket.on('disconnect', function(){
 	users -= 1
         console.log('a user disconnected.');
+    if (name != '') {
+        io.emit('status message', name + " left");
+    }   
+    else {
         io.emit('status message', 'Someone left... Users: ' + users)
+    }
     });
     socket.on('chat message', function(msg, name){
 	if (name == '') {
