@@ -8,7 +8,7 @@
     <div class="header">
     <h1 style="color:white">SockChat - A new way to communicate</h1>
     <p style="color:white">Chat and banter anonymously or with usernames.</p>
-    <p style="color:white">Created by <a style="color:white" href="http://paul-moulton.com/">Paul Moulton</a>.</p>
+    <p style="color:white">By <a style="color:white" href="http://paul-moulton.com/">Paul Moulton</a>.</p>
     </div>
   <div id="chat">
     <ul id="messages"></ul>
